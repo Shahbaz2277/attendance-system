@@ -6,4 +6,4 @@ passlib[bcrypt]
 PyJWT
 python-multipart
 python-dotenv
-psycopg2-binary   # add only if using PostgreSQL
+psycopg2-binary   # only if using PostgreSQL
