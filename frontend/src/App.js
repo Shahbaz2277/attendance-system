@@ -1,29 +1,39 @@
-import React, { useState } from "react";
-import ProfessorRegister from "./components/Professor/ProfessorRegister";
-import ProfessorLogin from "./components/Professor/ProfessorLogin";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+
+// Pages
+import Home from "./pages/Home";
+import ProfessorDashboard from "./pages/ProfessorDashboard";
+import BatchSelect from "./pages/BatchSelect";
+import CourseAdd from "./pages/CourseAdd";
+import StudentAdd from "./pages/StudentAdd";
+import AttendanceMark from "./pages/AttendanceMark";
+import StudentLogin from "./pages/StudentLogin";
+import StudentDashboard from "./pages/StudentDashboard";
+import CourseAttendance from "./pages/CourseAttendance"; // NEW
 
 function App() {
-  const [page, setPage] = useState("choice"); // choice / register / login
-
   return (
-    <div style={{ textAlign: "center", marginTop: "50px" }}>
-      <h1>Electronics Department</h1>
-      <h3>Attendance Management System</h3>
+    <Router>
+      <Routes>
+        {/* Home page */}
+        <Route path="/" element={<Home />} />
 
-      {page === "choice" && (
-        <>
-          <button onClick={() => setPage("register")} style={{ margin: "10px", padding: "10px 20px" }}>
-            Professor Register
-          </button>
-          <button onClick={() => setPage("login")} style={{ margin: "10px", padding: "10px 20px" }}>
-            Professor Login
-          </button>
-        </>
-      )}
+        {/* Professor/Admin */}
+        <Route path="/professor" element={<ProfessorDashboard />} />
+        <Route path="/batch" element={<BatchSelect />} />
+        <Route path="/course" element={<CourseAdd />} />
+        <Route path="/student" element={<StudentAdd />} />
+        <Route path="/attendance" element={<AttendanceMark />} />
 
-      {page === "register" && <ProfessorRegister goBack={() => setPage("choice")} />}
-      {page === "login" && <ProfessorLogin goBack={() => setPage("choice")} />}
-    </div>
+        {/* Student */}
+        <Route path="/student/login" element={<StudentLogin />} />
+        <Route path="/student-dashboard" element={<StudentDashboard />} />
+        <Route path="/course-attendance" element={<CourseAttendance />} /> {/* NEW */}
+
+        {/* Catch-all redirects to Home */}
+        <Route path="*" element={<Home />} />
+      </Routes>
+    </Router>
   );
 }
 
