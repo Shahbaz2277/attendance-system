@@ -1,3 +1,3 @@
 #!/bin/bash
-# Start FastAPI app
-uvicorn backend.app.main:app --host 0.0.0.0 --port $PORT
+cd backend
+uvicorn app.main:app --host 0.0.0.0 --port $PORT
