@@ -1,4 +1,5 @@
-const BASE_URL = "http://127.0.0.1:8000";
+const BASE_URL = "https://attendance-system-1-rg9y.onrender.com";
+
 
 // ---------------- Generic response handler ----------------
 const handleResponse = async (res) => {
